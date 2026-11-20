@@ -1,5 +1,7 @@
 package com.enset;
 
+import com.enset.adapter.AfficheurHdmi;
+import com.enset.adapter.HDMI;
 import com.enset.models.Agent;
 
 import java.util.HashMap;
@@ -8,6 +10,7 @@ public class AgentContainer {
 
     private HashMap<String, Agent> agentHashMap = new HashMap<>();
     private static volatile AgentContainer agentContainer;
+    private HDMI hdmi = new AfficheurHdmi();
 
     private AgentContainer() {}
 
@@ -30,7 +33,6 @@ public class AgentContainer {
     }
 
     public static AgentContainer getAgentContainer() {
-
         if (agentContainer == null) {
             synchronized (AgentContainer.class) {
                 if (agentContainer == null) {
@@ -39,5 +41,13 @@ public class AgentContainer {
             }
         }
         return agentContainer;
+    }
+
+    public void afficher() {
+        hdmi.afficher(this);
+    }
+
+    public void setHdmi(HDMI hdmi) {
+        this.hdmi = hdmi;
     }
 }

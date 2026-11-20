@@ -5,7 +5,7 @@ import com.enset.models.enums.TransactionType;
 
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class Transaction implements Comparable<Transaction>{
     private String id;
     private LocalDateTime date;
     private double montant;
@@ -56,5 +56,20 @@ public class Transaction {
         return new TransactionBuilder();
     }
 
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", montant=" + montant +
+                ", type=" + type +
+                '}';
+    }
 
+    @Override
+    public int compareTo(Transaction o) {
+        if (o.getMontant() == this.getMontant()) return 0;
+        else if (this.getMontant() < o.getMontant()) return -1;
+        return 1;
+    }
 }

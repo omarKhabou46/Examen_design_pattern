@@ -3,6 +3,7 @@ package com.enset;
 import com.enset.models.Agent;
 import com.enset.models.Transaction;
 import com.enset.models.enums.TransactionType;
+import com.enset.security.SecurityContext;
 
 import java.time.LocalDateTime;
 
@@ -10,8 +11,9 @@ import java.time.LocalDateTime;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Agent agent = new Agent("omar");
 
+
+        Agent agent = new Agent("omar");
         Transaction transaction1 = Transaction.builder()
                 .id("trs1")
                 .date(LocalDateTime.now())
@@ -73,16 +75,15 @@ public class Main {
 // Tests du cache
         System.out.println("=== Agent Omar ===");
         System.out.println(agent.getBiggestAmmountTransaction());
-        System.out.println(agent.getBiggestAmmountTransaction());
+//        System.out.println(agent.getBiggestAmmountTransaction());
 
-        System.out.println("=== Agent Ahmed ===");
-        System.out.println(agent2.getBiggestAmmountTransaction());
-        System.out.println(agent2.getBiggestAmmountTransaction());
+//        System.out.println("=== Agent Ahmed ===");
+//        System.out.println(agent2.getBiggestAmmountTransaction());
+//        System.out.println(agent2.getBiggestAmmountTransaction());
+//
+//        System.out.println("=== Agent Youssef ===");
+//        System.out.println(agent3.getBiggestAmmountTransaction());
+//        System.out.println(agent3.getBiggestAmmountTransaction());
 
-        System.out.println("=== Agent Youssef ===");
-        System.out.println(agent3.getBiggestAmmountTransaction());
-        System.out.println(agent3.getBiggestAmmountTransaction());
-
-
-    }
+        }
 }

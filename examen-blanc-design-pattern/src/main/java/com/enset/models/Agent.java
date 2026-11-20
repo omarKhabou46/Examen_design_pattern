@@ -1,6 +1,7 @@
 package com.enset.models;
 
 import com.enset.annotations.Cachable;
+import com.enset.annotations.SecuredBy;
 import com.enset.strategy.ScoringTraitementStrategy;
 import com.enset.strategy.TraitementNotification;
 
@@ -68,8 +69,9 @@ public class Agent {
                 '}';
     }
 
-    @Cachable
+    //@Cachable
     //@Log
+    @SecuredBy(roles = {"ADMIN"})
     public Transaction getBiggestAmmountTransaction() {
         return transactions.stream().max(Comparator.naturalOrder()).get();
     }

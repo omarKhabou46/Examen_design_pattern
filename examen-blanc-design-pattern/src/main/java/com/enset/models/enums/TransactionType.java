@@ -1,6 +1,6 @@
 package com.enset.models.enums;
 
-public enum TrasactionType {
+public enum TransactionType {
     VENTE,
     ACHAT
 }

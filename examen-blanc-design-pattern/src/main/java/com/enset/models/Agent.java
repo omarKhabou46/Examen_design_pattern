@@ -1,5 +1,9 @@
 package com.enset.models;
 
+import com.enset.strategy.ScoringTraitementStrategy;
+import com.enset.strategy.TraitementNotification;
+import com.sun.jdi.ArrayReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,22 +11,37 @@ public class Agent {
     private String nom;
     private List<Transaction> transactions = new ArrayList<>();
     private List<Agent> subscribers = new ArrayList<>();
+    private TraitementNotification strategy = new ScoringTraitementStrategy();
+    private List<Transaction> history = new ArrayList<>();
+    private double solde;
 
+    public Agent(String nom) {
+        this.nom = nom;
+    }
 
     public String getNom() {
         return nom;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+        notifier(transaction);
     }
 
     public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactions;
+    public double getSolde() {
+        return solde;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+
+    public void addTransactionToHistory(Transaction transaction) {
+        history.add(transaction);
     }
 
     public void enregistrer(Agent agent) {
@@ -32,6 +51,14 @@ public class Agent {
     public void supprimer(Agent agent) {
         subscribers.remove(agent);
     }
+
+    public void notifier(Transaction transaction) {
+        for (Agent subscriber : subscribers) {
+            subscriber.strategy.traiterNotification(nom, transaction, subscriber);
+        }
+    }
+
+
 
 
 }

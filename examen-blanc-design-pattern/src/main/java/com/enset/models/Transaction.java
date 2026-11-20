@@ -1,6 +1,7 @@
 package com.enset.models;
 
-import com.enset.models.enums.TrasactionType;
+import com.enset.builder.TransactionBuilder;
+import com.enset.models.enums.TransactionType;
 
 import java.time.LocalDateTime;
 
@@ -8,11 +9,11 @@ public class Transaction {
     private String id;
     private LocalDateTime date;
     private double montant;
-    private TrasactionType type;
+    private TransactionType type;
 
     public Transaction() {}
 
-    public Transaction(String id, TrasactionType type, LocalDateTime date, double montant) {
+    public Transaction(String id, TransactionType type, LocalDateTime date, double montant) {
         this.id = id;
         this.type = type;
         this.date = date;
@@ -43,12 +44,16 @@ public class Transaction {
         this.montant = montant;
     }
 
-    public TrasactionType getType() {
+    public TransactionType getType() {
         return type;
     }
 
-    public void setType(TrasactionType type) {
+    public void setType(TransactionType type) {
         this.type = type;
+    }
+
+    public static TransactionBuilder builder() {
+        return new TransactionBuilder();
     }
 
 

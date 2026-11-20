@@ -1,14 +1,12 @@
 package com.enset.models;
 
-import com.enset.annotations.Log;
+import com.enset.annotations.Cachable;
 import com.enset.strategy.ScoringTraitementStrategy;
 import com.enset.strategy.TraitementNotification;
-import com.sun.jdi.ArrayReference;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.OptionalDouble;
 
 public class Agent {
     private String nom;
@@ -70,7 +68,8 @@ public class Agent {
                 '}';
     }
 
-    @Log
+    @Cachable
+    //@Log
     public Transaction getBiggestAmmountTransaction() {
         return transactions.stream().max(Comparator.naturalOrder()).get();
     }

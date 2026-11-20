@@ -1,5 +1,6 @@
 package com.enset.models;
 
+import com.enset.annotations.Log;
 import com.enset.strategy.ScoringTraitementStrategy;
 import com.enset.strategy.TraitementNotification;
 import com.sun.jdi.ArrayReference;
@@ -69,6 +70,7 @@ public class Agent {
                 '}';
     }
 
+    @Log
     public Transaction getBiggestAmmountTransaction() {
         return transactions.stream().max(Comparator.naturalOrder()).get();
     }
